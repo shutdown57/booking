@@ -28,7 +28,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Profile" />
+    <Head title="Create Bookable" />
 
     <AuthenticatedLayout>
         <template #header>

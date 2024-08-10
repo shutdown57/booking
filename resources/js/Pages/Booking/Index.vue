@@ -60,6 +60,7 @@ const handleSelect = (id) => {
                     Book a new item
                 </PrimaryButton>
             </div>
+
             <div class="grid grid-cols-3 gap-4 bg-white p-5">
                 <div class="col-span-1">
                     <h4 class="p-3 border border-gray-300 mb-3">

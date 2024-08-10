@@ -65,7 +65,7 @@ const handleBook = () => {
 </script>
 
 <template>
-    <Head title="Profile" />
+    <Head title="Edit Booking" />
 
     <AuthenticatedLayout>
         <template #header>

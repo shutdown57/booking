@@ -17,7 +17,7 @@ const handleDelete = (id) => {
 </script>
 
 <template>
-    <Head title="Profile" />
+    <Head title="Bookable Items" />
 
     <AuthenticatedLayout>
         <template #header>

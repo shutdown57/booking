@@ -20,7 +20,7 @@ const handleEdit = (id) => {
 </script>
 
 <template>
-    <Head title="Profile" />
+    <Head title="Show Bookable" />
 
     <AuthenticatedLayout>
         <template #header>
