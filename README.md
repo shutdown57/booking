@@ -1,25 +1,74 @@
-# Booking tennis and snooker
+**Booking System**
+================
 
-**"Ace the Game with Our Booking System!"**
+A web-based application that allows administrators to manage different types of bookings (e.g. tennis courts, snooker tables) and clients to book these items.
 
-Are you looking to book a spot on our tennis or snooker tables? Look no further! Our online booking system makes it easy to reserve your preferred time slot, ensuring that you can play whenever you want.
+**Features**
+------------
 
-**Book Now and Play Soon!**
+### Admin Panel
 
-With our user-friendly interface, you can browse available times, select your desired table (tennis or snooker), and make a secure payment. Simply follow these steps:
+* Add new booking types (e.g. tennis court, snooker table)
+* Manage existing booking types (edit, delete)
+* View booking type details (price, etc.)
 
-1. **Choose Your Table**: Select from our tennis or snooker tables to find the perfect one for your game.
-2. **Pick Your Time Slot**: Browse through our schedule to find an available time that suits you.
-3. **Book Now!**: Make a booking and pay securely online.
-4. **Get Ready to Play!**: We'll send you a confirmation email with all the details, including your booking time and any additional information.
+### Client Portal
 
-**Why Book with Us?**
+* Browse available booking types
+* Book a specific booking type for a chosen time slot
+* View client's upcoming bookings and past bookings
 
--   **Convenience**: Our online system allows you to book at your own pace, 24/7.
--   **Flexibility**: Change or cancel your bookings as needed (subject to our cancellation policy).
--   **Competitive Prices**: We offer competitive rates for booking our tables.
--   **Quality Tables**: Our tennis and snooker tables are well-maintained and regularly serviced.
+**Installation**
+---------------
 
-**Get Ready to Hit the Court!**
+To get started with the project, follow these steps:
 
-Don't miss out on the opportunity to book your spot on our tennis or snooker table. Visit our website now, select your preferred table, and get ready to ace the game!
+1. Clone the repository using `git clone https://github.com/username/project-name.git`
+2. Install dependencies by running `npm install`
+3. Create a database schema for the application (see `config/database.js`)
+4. Run migrations to set up the database tables (`php artisan migrate`)
+
+**Usage**
+-----
+
+1. Start the development back-end server by running `php artisan serve`
+2. Start the development front-end server by running `npm run dev`
+3. Access the application at `http://localhost:8000`
+
+**Tests**
+-----
+
+* Running tests by `php artisan test` or `php artisan test -p` for parallel.
+* Running tests coverage by `php artisan test --coverage`.
+* Running tests profile by `php artisan test --profile`.
+
+### Endpoints
+
+* GET|HEAD  `/`: Retrieve index page.
+
+* GET|HEAD  `/bookable`: Retrieve index bookable page.
+* POST      `/bookable`: Create new bookable.
+* GET|HEAD  `/bookable/create`: Retrieve create bookable page.
+* GET|HEAD  `/bookable/{bookable}`: Retrieve show bookable page.
+* PUT       `/bookable/{bookable}`: Update an existing bookable.
+* DELETE    `/bookable/{bookable}`: Delete a bookable.
+* GET|HEAD  `/bookable/{bookable}/edit`: Retrieve edit bookable page.
+
+* GET|HEAD  `/bookable-type`: Retrieve index bookable type page.
+* POST      `/bookable-type`: Create new bookable type.
+* GET|HEAD  `/bookable-type/create`: Retrieve create bookable type page.
+* PUT       `/bookable-type/{bookableType}`: Update an existing bookable type.
+* DELETE    `/bookable-type/{bookableType}`: Delete a bookable type.
+* GET|HEAD  `/bookable-type/{bookableType}/edit`: Retrieve edit bookable type page.
+
+* GET|HEAD  `/booking`: Retrieve index booking page.
+* POST      `/booking`: Create new booking.
+* GET|HEAD  `/booking/create`: Retrieve create booking page.
+* PUT       `/booking/{id}`: Update an existing booking.
+* DELETE    `/booking/{id}`: Delete a booking.
+* GET|HEAD  `/booking/{id}/edit`: Retrieve edit booking page.
+
+**Technology Stack**
+-------------------
+
+Laravel, Inertia/Vue3, TailwindCSS, SQLite3
