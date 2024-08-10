@@ -1,4 +1,6 @@
 <script setup>
+import Badge from "@/Components/Badge.vue";
+
 const props = defineProps({
     id: Number,
     book_in: String,
@@ -54,6 +56,32 @@ const handleClick = () => {
                     <h3 class="font-bold uppercase text-gray-900">
                         {{ bookable?.name }}
                     </h3>
+
+                    <p class="my-2">
+                        <strong class="font-bold">Per-Hour Rate: </strong>
+                        <Badge
+                            type="info"
+                            :text="`$${bookable.per_hour_rate}`"
+                        />
+                    </p>
+                    <p class="my-2">
+                        <strong class="font-bold">Status: </strong>
+                        <Badge
+                            v-if="status === 0"
+                            type="warning"
+                            :text="`Pending`"
+                        />
+                        <Badge
+                            v-else-if="status === 1"
+                            type="success"
+                            :text="`Confirm`"
+                        />
+                        <Badge
+                            v-else-if="status === 2"
+                            type="danger"
+                            :text="`Cancel`"
+                        />
+                    </p>
                 </a>
             </div>
         </div>

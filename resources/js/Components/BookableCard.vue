@@ -1,8 +1,11 @@
 <script setup>
+import Badge from "@/Components/Badge.vue";
+
 const props = defineProps({
     id: Number,
     name: String,
     per_hour_rate: Number,
+    status: Number,
     image: String | null,
     type: Object,
     selected: Boolean,
@@ -51,6 +54,25 @@ const handleClick = () => {
                     <h3 class="font-bold uppercase text-gray-900">
                         {{ name }}
                     </h3>
+
+                    <p class="my-2">
+                        <strong class="font-bold">Per-Hour Rate: </strong>
+                        <Badge type="info" :text="`$${per_hour_rate}`" />
+                    </p>
+
+                    <p class="my-2">
+                        <strong class="font-bold">Per-Hour Rate: </strong>
+                        <Badge
+                            v-if="status === 0"
+                            type="danger"
+                            text="Deactive"
+                        />
+                        <Badge
+                            v-else-if="status === 1"
+                            type="success"
+                            text="Active"
+                        />
+                    </p>
                 </a>
             </div>
         </div>
