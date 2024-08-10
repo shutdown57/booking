@@ -5,8 +5,9 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-// import { Link } from "@inertiajs/vue3";
+import { usePage } from "@inertiajs/vue3";
 
+const page = usePage();
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -36,6 +37,44 @@ const showingNavigationDropdown = ref(false);
                                     :active="route().current('dashboard')"
                                 >
                                     Dashboard
+                                </NavLink>
+                                <NavLink
+                                    v-if="
+                                        page.props.auth?.roles?.includes(
+                                            'admin',
+                                        ) ||
+                                        page.props.auth?.roles?.includes(
+                                            'client',
+                                        )
+                                    "
+                                    :href="route('booking.index')"
+                                    :active="route().current('booking.index')"
+                                >
+                                    Booking
+                                </NavLink>
+                                <NavLink
+                                    v-if="
+                                        page.props.auth?.roles?.includes(
+                                            'admin',
+                                        )
+                                    "
+                                    :href="route('bookable.index')"
+                                    :active="route().current('bookable.index')"
+                                >
+                                    Bookable
+                                </NavLink>
+                                <NavLink
+                                    v-if="
+                                        page.props.auth?.roles?.includes(
+                                            'admin',
+                                        )
+                                    "
+                                    :href="route('bookable-type.index')"
+                                    :active="
+                                        route().current('bookable-type.index')
+                                    "
+                                >
+                                    Bookable Type
                                 </NavLink>
                             </div>
                         </div>
@@ -143,6 +182,30 @@ const showingNavigationDropdown = ref(false);
                             :active="route().current('dashboard')"
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            v-if="
+                                page.props.auth?.roles?.includes('admin') ||
+                                page.props.auth?.roles?.includes('client')
+                            "
+                            :href="route('booking.index')"
+                            :active="route().current('booking.index')"
+                        >
+                            Booking
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            v-if="page.props.auth?.roles?.includes('admin')"
+                            :href="route('bookable.index')"
+                            :active="route().current('bookable.index')"
+                        >
+                            Bookable
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            v-if="page.props.auth?.roles?.includes('admin')"
+                            :href="route('bookable-type.index')"
+                            :active="route().current('bookable-type.index')"
+                        >
+                            Bookable Type
                         </ResponsiveNavLink>
                     </div>
 

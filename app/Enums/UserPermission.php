@@ -2,59 +2,51 @@
 
 namespace App\Enums;
 
-enum UserPermission: string
+use App\Interfaces\HasName;
+
+enum UserPermission: string implements HasName
 {
-    case TennisCourtIndex = 'tennis-court.index';
-    case TennisCourtShow = 'tennis-court.show';
-    case TennisCourtCreate = 'tennis-court.create';
-    case TennisCourtEdit = 'tennis-court.edit';
-    case TennisCourtDelete = 'tennis-court.delete';
+    case BookableTypeIndex = 'bookable.type.index';
+    case BookableTypeShow = 'bookable.type.show';
+    case BookableTypeCreate = 'bookable.type.create';
+    case BookableTypeEdit = 'bookable.type.edit';
+    case BookableTypeDelete = 'bookable.type.delete';
 
-    case SnookerTableIndex = 'snooker-table.index';
-    case SnookerTableShow = 'snooker-table.show';
-    case SnookerTableCreate = 'snooker-table.create';
-    case SnookerTableEdit = 'snooker-table.edit';
-    case SnookerTableDelete = 'snooker-table.delete';
+    case BookableIndex = 'bookable.index';
+    case BookableShow = 'bookable.show';
+    case BookableCreate = 'bookable.create';
+    case BookableEdit = 'bookable.edit';
+    case BookableDelete = 'bookable.delete';
 
-    case BookingIndex = 'booking.index';
-    case BookingShow = 'booking.show';
-    case BookingCreate = 'booking.create';
-    case BookingEdit = 'booking.edit';
-    case BookingDelete = 'booking.delete';
-
-    case BookingOwnIndex = 'own.booking.index';
-    case BookingOwnShow = 'own.booking.show';
-    case BookingOwnCreate = 'own.booking.create';
-    case BookingOwnEdit = 'own.booking.edit';
+    case BookableUserIndex = 'bookable.user.index';
+    case BookableUserShow = 'bookable.user.show';
+    case BookableUserCreate = 'bookable.user.create';
+    case BookableUserEdit = 'bookable.user.edit';
+    case BookableUserDelete = 'bookable.user.delete';
 
     /**
-    * Get user permission label
+    * Get user permission name
     */
-    public function label(): string
+    public function name(): string
     {
         return match ($this) {
-            static::TennisCourtIndex => 'Tennis Court Index',
-            static::TennisCourtShow => 'Tennis Court Show',
-            static::TennisCourtCreate => 'Tennis Court Create',
-            static::TennisCourtEdit => 'Tennis Court Edit',
-            static::TennisCourtDelete => 'Tennis Court Delete',
+            static::BookableTypeIndex => 'Bookable Type Index',
+            static::BookableTypeShow => 'Bookable Type Show',
+            static::BookableTypeCreate => 'Bookable Type Create',
+            static::BookableTypeEdit => 'Bookable Type Edit',
+            static::BookableTypeDelete => 'Bookable Type Delete',
 
-            static::SnookerTableIndex => 'Snooker Table Index',
-            static::SnookerTableShow => 'Snooker Table Show',
-            static::SnookerTableCreate => 'Snooker Table Create',
-            static::SnookerTableEdit => 'Snooker Table Edit',
-            static::SnookerTableDelete => 'Snooker Table Delete',
+            static::BookableIndex => 'Bookable Index',
+            static::BookableShow => 'Bookable Show',
+            static::BookableCreate => 'Bookable Create',
+            static::BookableEdit => 'Bookable Edit',
+            static::BookableDelete => 'Bookable Delete',
 
-            static::BookingIndex => 'Booking Index',
-            static::BookingShow => 'Booking Show',
-            static::BookingCreate => 'Booking Create',
-            static::BookingEdit => 'Booking Edit',
-            static::BookingDelete => 'Booking Delete',
-
-            static::BookingOwnIndex => 'Own Booking Index',
-            static::BookingOwnShow => 'Own Booking Show',
-            static::BookingOwnCreate => 'Own Booking Create',
-            static::BookingOwnEdit => 'Own Booking Edit',
+            static::BookableUserIndex => 'Bookable User Index',
+            static::BookableUserShow => 'Bookable User Show',
+            static::BookableUserCreate => 'Bookable User Create',
+            static::BookableUserEdit => 'Bookable User Edit',
+            static::BookableUserDelete => 'Bookable User Delete',
         };
     }
 }

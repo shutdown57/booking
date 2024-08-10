@@ -1,3 +1,4 @@
+import '@fontsource-variable/figtree';
 import axios from 'axios';
 window.axios = axios;
 

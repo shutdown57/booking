@@ -12,9 +12,9 @@ return new class () extends Migration {
     {
         Schema::create('bookables', function (Blueprint $table) {
             $table->id();
-            $table->morphs('bookable');
-            $table->timestamp('book_in');
-            $table->timestamp('book_out');
+            $table->unsignedBigInteger('per_hour_rate');
+            $table->string('image')->nullable();
+            $table->string('name');
             $table->unsignedTinyInteger('status')->default(0);
             $table->timestamps();
 
@@ -22,6 +22,13 @@ return new class () extends Migration {
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('set null')
+                ->cascadeOnUpdate();
+
+            $table->unsignedBigInteger('bookable_type_id')->nullable();
+            $table->foreign('bookable_type_id')
+                ->references('id')
+                ->on('bookable_types')
                 ->onDelete('set null')
                 ->cascadeOnUpdate();
         });

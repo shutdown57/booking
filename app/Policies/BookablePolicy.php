@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Enums\UserPermission;
-use App\Models\Bookable;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -12,29 +11,19 @@ class BookablePolicy
     use HandlesAuthorization;
 
     /**
-    * User with role admin can view any bookable item,
-    * or any user can view own bookable item
+    * Anyone can view a bookable item
     */
-    public function view(?User $user, Bookable $bookable): bool|null
+    public function view(?User $user): bool|null
     {
-        if ($user->can(UserPermission::BookingShow->value)) {
-            return true;
-        }
-        return $user?->id === $bookable->user_id
-            && $user->can(UserPermission::BookingOwnShow->value);
+        return $user?->can(UserPermission::BookableCreate->value) ? true : null;
     }
 
     /**
-    * User with role admin can view any bookable items,
-    * or any user can view own bookable items
+    * Anyone can view bookable item list
     */
     public function viewAny(?User $user): bool|null
     {
-        if ($user->can(UserPermission::BookingIndex->value)) {
-            return true;
-        }
-        return $user?->bookables()->count() > 0
-            && $user->can(UserPermission::BookingOwnIndex->value);
+        return $user?->can(UserPermission::BookableCreate->value) ? true : null;
     }
 
     /**
@@ -42,27 +31,22 @@ class BookablePolicy
     */
     public function create(?User $user): bool|null
     {
-        return $user?->can(UserPermission::BookingCreate->value);
+        return $user?->can(UserPermission::BookableCreate->value) ? true : null;
     }
 
     /**
-    * User with role admin can edit any bookable item,
-    * or any user can edit own bookable item
+    * User with permission can edit any bookable item
     */
-    public function edit(?User $user, Bookable $bookable): bool|null
+    public function edit(?User $user): bool|null
     {
-        if ($user->can(UserPermission::BookingEdit->value)) {
-            return true;
-        }
-        return $user?->id === $bookable->user_id
-            && $user?->can(UserPermission::BookingOwnEdit->value);
+        return $user?->can(UserPermission::BookableEdit->value) ? true : null;
     }
 
     /**
-    * User with permission can delete snooker table item
+    * User with permission can delete any bookable item
     */
     public function delete(?User $user): bool|null
     {
-        return $user?->can(UserPermission::BookingDelete->value);
+        return $user?->can(UserPermission::BookableDelete->value) ? true : null;
     }
 }

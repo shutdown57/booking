@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    --vc-font-family: 'Figtree Variable', sans-serif;
+}

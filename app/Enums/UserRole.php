@@ -2,15 +2,17 @@
 
 namespace App\Enums;
 
-enum UserRole: string
+use App\Interfaces\HasName;
+
+enum UserRole: string implements HasName
 {
     case Client = 'client';
     case Admin = 'admin';
 
     /**
-    * Get user role label
+    * Get user role name
     */
-    public function label(): string
+    public function name(): string
     {
         return match ($this) {
             static::Client => 'Client',
