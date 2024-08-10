@@ -23,7 +23,7 @@ A web-based application that allows administrators to manage different types of 
 
 To get started with the project, follow these steps:
 
-1. Clone the repository using `git clone https://github.com/username/project-name.git`
+1. Clone the repository using `git clone https://github.com/shutodown57/booking.git`
 2. Install dependencies by running `npm install`
 3. Create a database schema for the application (see `config/database.js`)
 4. Run migrations to set up the database tables (`php artisan migrate`)
