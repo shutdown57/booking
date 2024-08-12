@@ -1,3 +1,4 @@
+[![Run tests](https://github.com/shutdown57/booking/actions/workflows/laravel.yml/badge.svg)](https://github.com/shutdown57/booking/actions/workflows/laravel.yml)
 **Booking System**
 ================
 
