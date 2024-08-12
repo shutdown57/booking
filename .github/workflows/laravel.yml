@@ -31,7 +31,9 @@ jobs:
         run: npm run build
 
       - name: Prepare Laravel Application
-        run: php artisan key:generate
+        run: |
+          cp .env.example .env
+          php artisan key:generate
 
       - name: Run tests
         env:
